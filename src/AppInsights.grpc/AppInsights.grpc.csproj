@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.core" Version="1.15.0" />
+    <PackageReference Include="opentracing.contrib.grpc" Version="0.1.0" />
+    <PackageReference Include="petabridge.tracing.applicationinsights" Version="0.1.0" />
+  </ItemGroup>
+
+</Project>
