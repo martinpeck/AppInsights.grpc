@@ -5,12 +5,6 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppInsights.Grpc", "AppInsights.grpc\AppInsights.Grpc.csproj", "{520A244E-60F6-49FA-9C6B-3F53FE45A22D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteGuide", "..\..\..\samples\RouteGuide\RouteGuide\RouteGuide.csproj", "{DE525FCE-A7F6-407C-BE83-DB2E365A4841}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppInsights.Grpc.ServerTest", "..\..\package_test\AppInsights.Grpc.ServerTest\AppInsights.Grpc.ServerTest.csproj", "{64921C89-34CD-4259-91EB-59B84E779398}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppInsights.Grpc.ClientTest", "..\..\package_test\AppInsights.Grpc.ClientTest\AppInsights.Grpc.ClientTest.csproj", "{DCEDA1FE-5D06-4D28-8C47-24D021A9BDD8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,18 +15,6 @@ Global
 		{520A244E-60F6-49FA-9C6B-3F53FE45A22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{520A244E-60F6-49FA-9C6B-3F53FE45A22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{520A244E-60F6-49FA-9C6B-3F53FE45A22D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE525FCE-A7F6-407C-BE83-DB2E365A4841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE525FCE-A7F6-407C-BE83-DB2E365A4841}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE525FCE-A7F6-407C-BE83-DB2E365A4841}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE525FCE-A7F6-407C-BE83-DB2E365A4841}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64921C89-34CD-4259-91EB-59B84E779398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64921C89-34CD-4259-91EB-59B84E779398}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64921C89-34CD-4259-91EB-59B84E779398}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64921C89-34CD-4259-91EB-59B84E779398}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCEDA1FE-5D06-4D28-8C47-24D021A9BDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCEDA1FE-5D06-4D28-8C47-24D021A9BDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCEDA1FE-5D06-4D28-8C47-24D021A9BDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCEDA1FE-5D06-4D28-8C47-24D021A9BDD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteGuideClient", "RouteGu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteGuideServer", "RouteGuideServer\RouteGuideServer.csproj", "{4B7C7794-BE24-4477-ACE7-18259EB73D27}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppInsights.grpc", "..\src\AppInsights.grpc\AppInsights.grpc.csproj", "{74752036-3E74-409B-9810-655E2F1877D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +29,15 @@ Global
 		{4B7C7794-BE24-4477-ACE7-18259EB73D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B7C7794-BE24-4477-ACE7-18259EB73D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B7C7794-BE24-4477-ACE7-18259EB73D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74752036-3E74-409B-9810-655E2F1877D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74752036-3E74-409B-9810-655E2F1877D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74752036-3E74-409B-9810-655E2F1877D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74752036-3E74-409B-9810-655E2F1877D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3E9A7E0-970D-443A-AAB3-41061A4BC93B}
 	EndGlobalSection
 EndGlobal
