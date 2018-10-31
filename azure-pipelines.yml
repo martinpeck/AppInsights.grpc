@@ -11,6 +11,10 @@ variables:
 
 steps:
 - script: dotnet restore src
+  displayName: 'dotnet restore src'
 - script: dotnet build src --configuration $(buildConfiguration)
+  displayName: 'dotnet build src '
 - script: dotnet restore sample
+  displayName: 'dotnet restore sample'
 - script: dotnet build sample --configuration $(buildConfiguration)
+  displayName: 'dotnet build sample'
