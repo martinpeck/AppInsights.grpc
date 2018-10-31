@@ -10,5 +10,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet restore
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet restore src
+- script: dotnet build src --configuration $(buildConfiguration)
+- script: dotnet restore sample
+- script: dotnet build sample --configuration $(buildConfiguration)
