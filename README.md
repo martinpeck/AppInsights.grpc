@@ -1,5 +1,7 @@
 # AppInsights.grpc
 
+[![Build Status](https://dev.azure.com/martinpeck-github/AppInsights.grpc/_apis/build/status/martinpeck.AppInsights.grpc)](https://dev.azure.com/martinpeck-github/AppInsights.grpc/_build/latest?definitionId=1)
+
 _Instrumentation of dotnet core base gRPC services, using Application Insights_
 
 ## WARNING
