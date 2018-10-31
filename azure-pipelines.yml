@@ -15,7 +15,7 @@ steps:
 - script: dotnet build src --configuration $(buildConfiguration)
   displayName: 'Build nuget package '
 - script: dotnet publish src --output $(Build.ArtifactStagingDirectory)
-  displayname: "Publish artifacts to staging directory (master only)"
+  displayName: "Publish artifacts to staging directory (master only)"
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 - script: dotnet restore sample
   displayName: 'Restore packages for sample projects'
