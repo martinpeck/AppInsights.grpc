@@ -10,9 +10,8 @@ variables:
   buildConfiguration: 'Release'
   majorVersion: 0
   minorVersion: 0
-  patchVersion: $(BuildID)
 
-name: $(majorVersion).$(buildConfiguration).$(patchVersion)
+name: $(majorVersion).$(minorVersion).$(BuildID)
 
 steps:
 - script: dotnet restore src
