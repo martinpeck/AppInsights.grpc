@@ -34,9 +34,9 @@ jobs:
     displayName: 'dotnet pack'
     inputs:
       command: pack
-      packagesToPack: grpc/src/AppInsights.grpc/AppInsights.grpc.csproj
+      packagesToPack: src/AppInsights.grpc/AppInsights.grpc.csproj
       versioningScheme: byBuildNumber
-      workingDirectory: grpc/src/AppInsights.grpc
+      workingDirectory: src/AppInsights.grpc
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet push'
