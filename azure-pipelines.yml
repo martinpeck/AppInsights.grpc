@@ -9,7 +9,7 @@ variables:
   minorVersion: 0
   patchVersion: 1
 
-name: $(majorVersion).$(minorVersion).$(patchVersion)-ci-$(BuildID)
+name: $(majorVersion).$(minorVersion).$(patchVersion).$(BuildID)
 
 jobs:
 - job: CIBuild
@@ -44,4 +44,4 @@ jobs:
       command: push
       packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
       nuGetFeedType: internal
-      publishVstsFeed: https://pkgs.dev.azure.com/martinpeck-github/_packaging/AppInsights_grpc/nuget/v3/index.json
+      publishVstsFeed: 'https://pkgs.dev.azure.com/martinpeck-github/_packaging/AppInsights_grpc/nuget/v3/index.json'
