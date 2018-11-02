@@ -27,9 +27,21 @@ jobs:
 
 - job: PublishArtifacts
   dependsOn: CIBuild
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
-  - script: dotnet publish src --output $(Build.ArtifactStagingDirectory)
-    displayName: "Publish artifacts to staging directory (master only)"
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack'
+    inputs:
+      command: pack
+      packagesToPack: grpc/src/AppInsights.Grpc/AppInsights.grpc/AppInsights.grpc.csproj
+      versioningScheme: byBuildNumber
+      workingDirectory: grpc/src/AppInsights.grpc/AppInsights.grpc
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet push'
+    inputs:
+      command: push
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+      nuGetFeedType: internal
+      publishVstsFeed: https://pkgs.dev.azure.com/martinpeck-github/_packaging/AppInsights_grpc/nuget/v3/index.json
