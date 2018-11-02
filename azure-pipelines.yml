@@ -44,4 +44,4 @@ jobs:
       command: push
       packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
       nuGetFeedType: internal
-      publishVstsFeed: 'https://pkgs.dev.azure.com/martinpeck-github/_packaging/AppInsights_grpc/nuget/v3/index.json'
+      publishVstsFeed: AppInsights_grpc
