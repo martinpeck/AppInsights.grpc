@@ -8,6 +8,11 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  majorVersion: 0
+  minorVersion: 0
+  patchVersion: 1
+
+name: $(majorVersion).$(minorVersion).$(patchVersion)-ci-$(BuildID)
 
 steps:
 - script: dotnet restore src
