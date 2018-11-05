@@ -3,13 +3,21 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+trigger:
+  branches:
+    include:
+    - master
+pr:
+  branches:
+    include:
+    - master
+
 variables:
   buildConfiguration: 'Release'
   majorVersion: 0
   minorVersion: 0
-  patchVersion: 1
 
-name: $(majorVersion).$(minorVersion).$(patchVersion).$(BuildID)
+name: $(majorVersion).$(minorVersion).$(Rev:r)
 
 jobs:
 - job: CIBuild
@@ -25,8 +33,10 @@ jobs:
   - script: dotnet build sample --configuration $(buildConfiguration)
     displayName: 'Build sample projects'
 
-- job: PublishArtifacts
+- job: PublishArtifactsLocally
   dependsOn: CIBuild
+  condition: and(succeeded()
+#  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
@@ -35,11 +45,11 @@ jobs:
     inputs:
       command: pack
       packagesToPack: src/AppInsights.grpc/AppInsights.grpc.csproj
-      versioningScheme: byBuildNumber
+      versioningScheme: byPrereleaseNumber
       workingDirectory: src/AppInsights.grpc
 
   - task: DotNetCoreCLI@2
-    displayName: 'dotnet push'
+    displayName: 'dotnet nuget push to private feed'
     inputs:
       command: push
       packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
