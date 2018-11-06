@@ -3,21 +3,54 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+trigger:
+  branches:
+    include:
+    - master
+pr:
+  branches:
+    include:
+    - master
 
 variables:
   buildConfiguration: 'Release'
+  majorVersion: 1
+  minorVersion: 0
 
-steps:
-- script: dotnet restore src
-  displayName: 'Restore packages for main src'
-- script: dotnet build src --configuration $(buildConfiguration)
-  displayName: 'Build nuget package '
-- script: dotnet publish src --output $(Build.ArtifactStagingDirectory)
-  displayName: "Publish artifacts to staging directory (master only)"
+name: $(majorVersion).$(minorVersion).$(Rev:r)
+
+jobs:
+- job: CIBuild
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  steps:
+  - script: dotnet restore src
+    displayName: 'Restore packages for main src'
+  - script: dotnet build src --configuration $(buildConfiguration)
+    displayName: 'Build nuget package '
+  - script: dotnet restore sample
+    displayName: 'Restore packages for sample projects'
+  - script: dotnet build sample --configuration $(buildConfiguration)
+    displayName: 'Build sample projects'
+
+- job: PublishArtifactsLocally
+  dependsOn: CIBuild
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-- script: dotnet restore sample
-  displayName: 'Restore packages for sample projects'
-- script: dotnet build sample --configuration $(buildConfiguration)
-  displayName: 'Build sample projects'
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack'
+    inputs:
+      command: pack
+      packagesToPack: src/AppInsights.grpc/AppInsights.grpc.csproj
+      versioningScheme: byPrereleaseNumber
+      workingDirectory: src/AppInsights.grpc
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet nuget push to private feed'
+    inputs:
+      command: push
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+      nuGetFeedType: internal
+      publishVstsFeed: AppInsights_grpc
