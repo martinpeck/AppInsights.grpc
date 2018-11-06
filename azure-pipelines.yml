@@ -14,7 +14,7 @@ pr:
 
 variables:
   buildConfiguration: 'Release'
-  majorVersion: 0
+  majorVersion: 1
   minorVersion: 0
 
 name: $(majorVersion).$(minorVersion).$(Rev:r)
@@ -35,8 +35,7 @@ jobs:
 
 - job: PublishArtifactsLocally
   dependsOn: CIBuild
-  condition: succeeded()
-#  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
